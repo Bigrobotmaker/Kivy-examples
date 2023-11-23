@@ -36,10 +36,40 @@ class application(App):
       layout.add_widget(self.calculateButton)
       self.resultLabel = Label(text='')
       layout.add_widget(self.resultLabel)
+
+      self.calculateButton = Button(text = 'add',on_press = self.handle_click2)
+      layout.add_widget(self.calculateButton)
+      self.resultLabel = Label(text='')
+      layout.add_widget(self.resultLabel)
+      
+      self.calculateButton = Button(text = 'subtract',on_press = self.handle_click3)
+      layout.add_widget(self.calculateButton)
+      self.resultLabel = Label(text='')
+      layout.add_widget(self.resultLabel)
+
+      self.calculateButton = Button(text = 'divide',on_press = self.handle_click4)
+      layout.add_widget(self.calculateButton)
+      self.resultLabel = Label(text='')
+      layout.add_widget(self.resultLabel)
       return layout
+   
    def handle_click(self, instance):
       result = self.get_first_number() * self.get_second_number()
       self.resultLabel.text = 'Result: ' + str(result )
+
+   def handle_click2(self, instance):
+      result = self.get_first_number() + self.get_second_number()
+      self.resultLabel.text = 'Result: ' + str(result )
+   
+   def handle_click3(self, instance):
+      result = self.get_first_number() - self.get_second_number()
+      self.resultLabel.text = 'Result: ' + str(result )
+   
+   def handle_click4(self, instance):
+      result = self.get_first_number() // self.get_second_number()
+      self.resultLabel.text = 'Result: ' + str(result )
+
+
    def get_first_number(self):
       return int(self.firstNumberInput.text)
    def get_second_number(self):
