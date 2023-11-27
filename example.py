@@ -52,26 +52,42 @@ class application(App):
       self.resultLabel = Label(text='')
       layout.add_widget(self.resultLabel)
       return layout
-   
+
    def handle_click(self, instance):
-      result = self.get_first_number() * self.get_second_number()
-      self.resultLabel.text = 'Result: ' + str(result )
+      try:
+         result = self.get_first_number() * self.get_second_number()
+         self.resultLabel.text = 'Result: ' + str(result )
+      except:
+         self.resultLabel.text = 'there was an error'
 
    def handle_click2(self, instance):
-      result = self.get_first_number() + self.get_second_number()
-      self.resultLabel.text = 'Result: ' + str(result )
+      try:
+         result = self.get_first_number() + self.get_second_number()
+         self.resultLabel.text = 'Result: ' + str(result )
+      except:
+         self.resultLabel.text = 'there was an error'
    
    def handle_click3(self, instance):
-      result = self.get_first_number() - self.get_second_number()
-      self.resultLabel.text = 'Result: ' + str(result )
+      try:
+         result = self.get_first_number() - self.get_second_number()
+         self.resultLabel.text = 'Result: ' + str(result )
+      except:
+         self.resultLabel.text = 'there was an error'
    
    def handle_click4(self, instance):
-      result = self.get_first_number() // self.get_second_number()
-      self.resultLabel.text = 'Result: ' + str(result )
+      try:
+            if self.get_second_number() == 0:
+               self.resultLabel.text = 'error, division by 0'
+            else:
+               result = self.get_first_number() // self.get_second_number()
+               self.resultLabel.text = 'Result: ' + str(result )
+      except:
+         self.resultLabel.text = 'there was an error'
 
 
    def get_first_number(self):
-      return int(self.firstNumberInput.text)
+         return int(self.firstNumberInput.text)
+   
    def get_second_number(self):
       return int(self.secondNumberInput.text)
 if __name__ == '__main__':
