@@ -21,6 +21,18 @@ class application(App):
       self.resultLabel = Label(text='')
       layout.add_widget(self.resultLabel)
       return layout
+   def FtoC(self,instance):
+      try:
+         self.resultLabel.text = (int(self.tinput.text)-32)//1.8
+      except:
+         self.resultLabel.text = 'an error was encountered, please check your input'
+   
+   def CtoF(self,instance):
+      try:
+         self.resultLabel.text = (int(self.tinput.text)+32)*1.8
+      except:
+         self.resultLabel.text = 'an error was encountered, please check your input'
+   
 if __name__ == '__main__':
    myApp = application()
    myApp.run()
