@@ -19,9 +19,11 @@ class application(App):
       if self.n == 'nought' and instance.text == '':
          instance.text = 'O'
          self.n = 'cross'
+         instance.background_color = [0,0,1,1]
       elif self.n == 'cross' and instance.text == '':
          instance.text = 'X'
          self.n = 'nought'
+         instance.background_color = [1,0,0,1]
 if __name__ == "__main__":
     myApp = application()
     myApp.run()
