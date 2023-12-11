@@ -8,11 +8,12 @@ class application(App):
       layout = GridLayout(cols=2)
       layoutext = 0
       self.layoutext = layoutext
-      layout.add_widget(Label(text = str(layoutext)))
+      self.drlabel = Label(text = str(layoutext),on_touch_up = self.addup)
+      layout.add_widget(self.drlabel)
       return layout
-   def on_touch_up(self):
+   def addup(self,instance,left):
       self.layoutext = self.layoutext + 1
-      print(self.layoutext)
+      self.drlabel.text = str(self.layoutext)
       
 
 
