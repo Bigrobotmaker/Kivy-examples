@@ -1,33 +1,36 @@
 import random
+import time
 import kivy
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
-#current plan: make 16 different labels and add in a random order
+from kivy.uix.button import Button
+#try: separate reveal and hide to make delay work
+clicky = 0
+last_num = 0
 class application(App):
    def build(self):
-      last_num = 0
       taken = []
       gen = 0
       layout = GridLayout(cols=4)
-      self.card1 = Label(text = 'click here',on_touch_up = self.revealed1)
-      self.card2 = Label(text = 'click here',on_touch_up = self.revealed1)
-      self.card3 = Label(text = 'click here',on_touch_up = self.revealed2)
-      self.card4 = Label(text = 'click here',on_touch_up = self.revealed2)
-      self.card5 = Label(text = 'click here',on_touch_up = self.revealed3)
-      self.card6 = Label(text = 'click here',on_touch_up = self.revealed3)
-      self.card7 = Label(text = 'click here',on_touch_up = self.revealed4)
-      self.card8 = Label(text = 'click here',on_touch_up = self.revealed4)
-      self.card9 = Label(text = 'click here',on_touch_up = self.revealed5)
-      self.card10 = Label(text = 'click here',on_touch_up = self.revealed5)
-      self.card11 = Label(text = 'click here',on_touch_up = self.revealed6)
-      self.card12 = Label(text = 'click here',on_touch_up = self.revealed6)
-      self.card13 = Label(text = 'click here',on_touch_up = self.revealed7)
-      self.card14 = Label(text = 'click here',on_touch_up = self.revealed7)
-      self.card15 = Label(text = 'click here',on_touch_up = self.revealed8)
-      self.card16 = Label(text = 'click here',on_touch_up = self.revealed8)
+      self.card1 = Button(text = 'click here',on_press = self.revealed1)
+      self.card2 = Button(text = 'click here',on_press = self.revealed1)
+      self.card3 = Button(text = 'click here',on_press = self.revealed2)
+      self.card4 = Button(text = 'click here',on_press = self.revealed2)
+      self.card5 = Button(text = 'click here',on_press = self.revealed3)
+      self.card6 = Button(text = 'click here',on_press = self.revealed3)
+      self.card7 = Button(text = 'click here',on_press = self.revealed4)
+      self.card8 = Button(text = 'click here',on_press = self.revealed4)
+      self.card9 = Button(text = 'click here',on_press = self.revealed5)
+      self.card10 = Button(text = 'click here',on_press = self.revealed5)
+      self.card11 = Button(text = 'click here',on_press = self.revealed6)
+      self.card12 = Button(text = 'click here',on_press = self.revealed6)
+      self.card13 = Button(text = 'click here',on_press = self.revealed7)
+      self.card14 = Button(text = 'click here',on_press = self.revealed7)
+      self.card15 = Button(text = 'click here',on_press = self.revealed8)
+      self.card16 = Button(text = 'click here',on_press = self.revealed8)
       for i in range(16):
-         while gen in taken and len(taken) != 16:
+         while (gen in taken or gen == 0) and len(taken) < 16:
             gen = random.randint(1,16) 
          if gen == 1:
             layout.add_widget(self.card1)
@@ -78,11 +81,16 @@ class application(App):
             layout.add_widget(self.card16)
             taken.append(16)
       return layout
-   def revealed1(self,instance,last_num):
+   def revealed1(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 1
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
@@ -91,11 +99,16 @@ class application(App):
          last_num = 0
       if clicky == 1:
          last_num = 1
-   def revealed2(self,instance,last_num):
+   def revealed2(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 2
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
@@ -103,11 +116,16 @@ class application(App):
          last_num = 0
       if clicky == 1:
          last_num = 2
-   def revealed3(self,instance,last_num):
+   def revealed3(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 3
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
@@ -115,11 +133,16 @@ class application(App):
          last_num = 0
       if clicky == 1:
          last_num = 3
-   def revealed4(self,instance,left):
+   def revealed4(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 4
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
@@ -127,11 +150,16 @@ class application(App):
          last_num = 0
       if clicky == 1:
          last_num = 4
-   def revealed5(self,instance,left):
+   def revealed5(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 5
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
@@ -139,11 +167,16 @@ class application(App):
          last_num = 0
       if clicky == 1:
          last_num = 5
-   def revealed6(self,instance,left):
+   def revealed6(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 6
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
@@ -151,11 +184,16 @@ class application(App):
          last_num = 0
       if clicky == 1:
          last_num = 6
-   def revealed7(self,instance,left):
+   def revealed7(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 7
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
@@ -163,11 +201,16 @@ class application(App):
          last_num = 0
       if clicky == 1:
          last_num = 7
-   def revealed8(self,instance,left):
+   def revealed8(self,instance):
+      global clicky
+      global last_num
       self.layoutext = 8
+      instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
+         time.sleep(3)
          self.layoutext = "click here!"
+         instance.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
