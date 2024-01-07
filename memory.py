@@ -1,34 +1,35 @@
 import random
-import time
 import kivy
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
+from kivy.clock import Clock
 #try: separate reveal and hide to make delay work
 clicky = 0
 last_num = 0
+completed = 0
 class application(App):
    def build(self):
       taken = []
       gen = 0
       layout = GridLayout(cols=4)
-      self.card1 = Button(text = 'click here',on_press = self.revealed1)
-      self.card2 = Button(text = 'click here',on_press = self.revealed1)
-      self.card3 = Button(text = 'click here',on_press = self.revealed2)
-      self.card4 = Button(text = 'click here',on_press = self.revealed2)
-      self.card5 = Button(text = 'click here',on_press = self.revealed3)
-      self.card6 = Button(text = 'click here',on_press = self.revealed3)
-      self.card7 = Button(text = 'click here',on_press = self.revealed4)
-      self.card8 = Button(text = 'click here',on_press = self.revealed4)
-      self.card9 = Button(text = 'click here',on_press = self.revealed5)
-      self.card10 = Button(text = 'click here',on_press = self.revealed5)
-      self.card11 = Button(text = 'click here',on_press = self.revealed6)
-      self.card12 = Button(text = 'click here',on_press = self.revealed6)
-      self.card13 = Button(text = 'click here',on_press = self.revealed7)
-      self.card14 = Button(text = 'click here',on_press = self.revealed7)
-      self.card15 = Button(text = 'click here',on_press = self.revealed8)
-      self.card16 = Button(text = 'click here',on_press = self.revealed8)
+      self.card1 = Button(text = 'click here!',on_press = self.revealed1)
+      self.card2 = Button(text = 'click here!',on_press = self.revealed1)
+      self.card3 = Button(text = 'click here!',on_press = self.revealed2)
+      self.card4 = Button(text = 'click here!',on_press = self.revealed2)
+      self.card5 = Button(text = 'click here!',on_press = self.revealed3)
+      self.card6 = Button(text = 'click here!',on_press = self.revealed3)
+      self.card7 = Button(text = 'click here!',on_press = self.revealed4)
+      self.card8 = Button(text = 'click here!',on_press = self.revealed4)
+      self.card9 = Button(text = 'click here!',on_press = self.revealed5)
+      self.card10 = Button(text = 'click here!',on_press = self.revealed5)
+      self.card11 = Button(text = 'click here!',on_press = self.revealed6)
+      self.card12 = Button(text = 'click here!',on_press = self.revealed6)
+      self.card13 = Button(text = 'click here!',on_press = self.revealed7)
+      self.card14 = Button(text = 'click here!',on_press = self.revealed7)
+      self.card15 = Button(text = 'click here!',on_press = self.revealed8)
+      self.card16 = Button(text = 'click here!',on_press = self.revealed8)
       for i in range(16):
          while (gen in taken or gen == 0) and len(taken) < 16:
             gen = random.randint(1,16) 
@@ -84,138 +85,386 @@ class application(App):
    def revealed1(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 1
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
+         if last_num == 2:
+            self.layoutext = "click here!"
+            self.card3.text = str(self.layoutext)
+            self.card4.text = str(self.layoutext)
+         if last_num == 3:
+            self.layoutext = "click here!"
+            self.card5.text = str(self.layoutext)
+            self.card6.text = str(self.layoutext)
+         if last_num == 4:
+            self.layoutext = "click here!"
+            self.card7.text = str(self.layoutext)
+            self.card8.text = str(self.layoutext)
+         if last_num == 5:
+            self.layoutext = "click here!"
+            self.card9.text = str(self.layoutext)
+            self.card10.text = str(self.layoutext)
+         if last_num == 6:
+            self.layoutext = "click here!"
+            self.card11.text = str(self.layoutext)
+            self.card12.text = str(self.layoutext)
+         if last_num == 7:
+            self.layoutext = "click here!"
+            self.card13.text = str(self.layoutext)
+            self.card14.text = str(self.layoutext)
+         if last_num == 8:
+            self.layoutext = "click here!"
+            self.card15.text = str(self.layoutext)
+            self.card16.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
-         last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 1
    def revealed2(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 2
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
          clicky = 0
+         
+         if last_num == 1:
+            self.layoutext = "click here!"
+            self.card1.text = str(self.layoutext)
+            self.card2.text = str(self.layoutext)
+         if last_num == 3:
+            self.layoutext = "click here!"
+            self.card5.text = str(self.layoutext)
+            self.card6.text = str(self.layoutext)
+         if last_num == 4:
+            self.layoutext = "click here!"
+            self.card7.text = str(self.layoutext)
+            self.card8.text = str(self.layoutext)
+         if last_num == 5:
+            self.layoutext = "click here!"
+            self.card9.text = str(self.layoutext)
+            self.card10.text = str(self.layoutext)
+         if last_num == 6:
+            self.layoutext = "click here!"
+            self.card11.text = str(self.layoutext)
+            self.card12.text = str(self.layoutext)
+         if last_num == 7:
+            self.layoutext = "click here!"
+            self.card13.text = str(self.layoutext)
+            self.card14.text = str(self.layoutext)
+         if last_num == 8:
+            self.layoutext = "click here!"
+            self.card15.text = str(self.layoutext)
+            self.card16.text = str(self.layoutext)
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 2
    def revealed3(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 3
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
+         if last_num == 1:
+            self.layoutext = "click here!"
+            self.card1.text = str(self.layoutext)
+            self.card2.text = str(self.layoutext)
+         if last_num == 2:
+            self.layoutext = "click here!"
+            self.card3.text = str(self.layoutext)
+            self.card4.text = str(self.layoutext)
+         if last_num == 4:
+            self.layoutext = "click here!"
+            self.card7.text = str(self.layoutext)
+            self.card8.text = str(self.layoutext)
+         if last_num == 5:
+            self.layoutext = "click here!"
+            self.card9.text = str(self.layoutext)
+            self.card10.text = str(self.layoutext)
+         if last_num == 6:
+            self.layoutext = "click here!"
+            self.card11.text = str(self.layoutext)
+            self.card12.text = str(self.layoutext)
+         if last_num == 7:
+            self.layoutext = "click here!"
+            self.card13.text = str(self.layoutext)
+            self.card14.text = str(self.layoutext)
+         if last_num == 8:
+            self.layoutext = "click here!"
+            self.card15.text = str(self.layoutext)
+            self.card16.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 3
    def revealed4(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 4
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
+         if last_num == 1:
+            self.layoutext = "click here!"
+            self.card1.text = str(self.layoutext)
+            self.card2.text = str(self.layoutext)
+         if last_num == 3:
+            self.layoutext = "click here!"
+            self.card5.text = str(self.layoutext)
+            self.card6.text = str(self.layoutext)
+         if last_num == 2:
+            self.layoutext = "click here!"
+            self.card3.text = str(self.layoutext)
+            self.card4.text = str(self.layoutext)
+         if last_num == 5:
+            self.layoutext = "click here!"
+            self.card9.text = str(self.layoutext)
+            self.card10.text = str(self.layoutext)
+         if last_num == 6:
+            self.layoutext = "click here!"
+            self.card11.text = str(self.layoutext)
+            self.card12.text = str(self.layoutext)
+         if last_num == 7:
+            self.layoutext = "click here!"
+            self.card13.text = str(self.layoutext)
+            self.card14.text = str(self.layoutext)
+         if last_num == 8:
+            self.layoutext = "click here!"
+            self.card15.text = str(self.layoutext)
+            self.card16.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 4
    def revealed5(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 5
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
+         if last_num == 1:
+            self.layoutext = "click here!"
+            self.card1.text = str(self.layoutext)
+            self.card2.text = str(self.layoutext)
+         if last_num == 3:
+            self.layoutext = "click here!"
+            self.card5.text = str(self.layoutext)
+            self.card6.text = str(self.layoutext)
+         if last_num == 4:
+            self.layoutext = "click here!"
+            self.card7.text = str(self.layoutext)
+            self.card8.text = str(self.layoutext)
+         if last_num == 2:
+            self.layoutext = "click here!"
+            self.card3.text = str(self.layoutext)
+            self.card4.text = str(self.layoutext)
+         if last_num == 6:
+            self.layoutext = "click here!"
+            self.card11.text = str(self.layoutext)
+            self.card12.text = str(self.layoutext)
+         if last_num == 7:
+            self.layoutext = "click here!"
+            self.card13.text = str(self.layoutext)
+            self.card14.text = str(self.layoutext)
+         if last_num == 8:
+            self.layoutext = "click here!"
+            self.card15.text = str(self.layoutext)
+            self.card16.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 5
    def revealed6(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 6
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
+         if last_num == 1:
+            self.layoutext = "click here!"
+            self.card1.text = str(self.layoutext)
+            self.card2.text = str(self.layoutext)
+         if last_num == 3:
+            self.layoutext = "click here!"
+            self.card5.text = str(self.layoutext)
+            self.card6.text = str(self.layoutext)
+         if last_num == 4:
+            self.layoutext = "click here!"
+            self.card7.text = str(self.layoutext)
+            self.card8.text = str(self.layoutext)
+         if last_num == 5:
+            self.layoutext = "click here!"
+            self.card9.text = str(self.layoutext)
+            self.card10.text = str(self.layoutext)
+         if last_num == 2:
+            self.layoutext = "click here!"
+            self.card3.text = str(self.layoutext)
+            self.card4.text = str(self.layoutext)
+         if last_num == 7:
+            self.layoutext = "click here!"
+            self.card13.text = str(self.layoutext)
+            self.card14.text = str(self.layoutext)
+         if last_num == 8:
+            self.layoutext = "click here!"
+            self.card15.text = str(self.layoutext)
+            self.card16.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 6
    def revealed7(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 7
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
+         if last_num == 1:
+            self.layoutext = "click here!"
+            self.card1.text = str(self.layoutext)
+            self.card2.text = str(self.layoutext)
+         if last_num == 3:
+            self.layoutext = "click here!"
+            self.card5.text = str(self.layoutext)
+            self.card6.text = str(self.layoutext)
+         if last_num == 4:
+            self.layoutext = "click here!"
+            self.card7.text = str(self.layoutext)
+            self.card8.text = str(self.layoutext)
+         if last_num == 5:
+            self.layoutext = "click here!"
+            self.card9.text = str(self.layoutext)
+            self.card10.text = str(self.layoutext)
+         if last_num == 6:
+            self.layoutext = "click here!"
+            self.card11.text = str(self.layoutext)
+            self.card12.text = str(self.layoutext)
+         if last_num == 2:
+            self.layoutext = "click here!"
+            self.card3.text = str(self.layoutext)
+            self.card4.text = str(self.layoutext)
+         if last_num == 8:
+            self.layoutext = "click here!"
+            self.card15.text = str(self.layoutext)
+            self.card16.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 7
    def revealed8(self,instance):
       global clicky
       global last_num
+      global completed
       self.layoutext = 8
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
-         time.sleep(3)
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
+         if last_num == 1:
+            self.layoutext = "click here!"
+            self.card1.text = str(self.layoutext)
+            self.card2.text = str(self.layoutext)
+         if last_num == 3:
+            self.layoutext = "click here!"
+            self.card5.text = str(self.layoutext)
+            self.card6.text = str(self.layoutext)
+         if last_num == 4:
+            self.layoutext = "click here!"
+            self.card7.text = str(self.layoutext)
+            self.card8.text = str(self.layoutext)
+         if last_num == 5:
+            self.layoutext = "click here!"
+            self.card9.text = str(self.layoutext)
+            self.card10.text = str(self.layoutext)
+         if last_num == 6:
+            self.layoutext = "click here!"
+            self.card11.text = str(self.layoutext)
+            self.card12.text = str(self.layoutext)
+         if last_num == 7:
+            self.layoutext = "click here!"
+            self.card13.text = str(self.layoutext)
+            self.card14.text = str(self.layoutext)
+         if last_num == 2:
+            self.layoutext = "click here!"
+            self.card3.text = str(self.layoutext)
+            self.card4.text = str(self.layoutext)
          clicky = 0
          last_num = 0
       if clicky == 2 and last_num == self.layoutext:
          clicky = 0
          last_num = 0
+         completed += 1
+         if completed == 8:
+            print('you win!')
       if clicky == 1:
          last_num = 8
 if __name__ == "__main__":
