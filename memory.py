@@ -1,11 +1,11 @@
 import random
 import kivy
+import time
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.clock import Clock
-#try: separate reveal and hide to make delay work
 clicky = 0
 last_num = 0
 completed = 0
@@ -92,6 +92,7 @@ class application(App):
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
          self.layoutext = "click here!"
+         time.sleep(3)
          instance.text = str(self.layoutext)
          if last_num == 2:
             self.layoutext = "click here!"
