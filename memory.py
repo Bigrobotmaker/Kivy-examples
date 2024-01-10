@@ -86,6 +86,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 1
       instance.text = str(self.layoutext)
       clicky += 1
@@ -134,6 +135,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 2
       instance.text = str(self.layoutext)
       clicky += 1
@@ -183,6 +185,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 3
       instance.text = str(self.layoutext)
       clicky += 1
@@ -231,6 +234,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 4
       instance.text = str(self.layoutext)
       clicky += 1
@@ -279,6 +283,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 5
       instance.text = str(self.layoutext)
       clicky += 1
@@ -327,6 +332,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 6
       instance.text = str(self.layoutext)
       clicky += 1
@@ -375,6 +381,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 7
       instance.text = str(self.layoutext)
       clicky += 1
@@ -382,6 +389,7 @@ class application(App):
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
          if last_num == 1:
+
             self.layoutext = "click here!"
             self.card1.text = str(self.layoutext)
             self.card2.text = str(self.layoutext)
@@ -423,6 +431,7 @@ class application(App):
       global clicky
       global last_num
       global completed
+      if completed == 8: return
       self.layoutext = 8
       instance.text = str(self.layoutext)
       clicky += 1
