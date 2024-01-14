@@ -9,6 +9,14 @@ from kivy.clock import Clock
 clicky = 0
 last_num = 0
 completed = 0
+match1 = 0
+match2 = 0
+match3 = 0
+match4 = 0
+match5 = 0
+match6 = 0
+match7 = 0
+match8 = 0
 class application(App):
    def build(self):
       taken = []
@@ -86,13 +94,14 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match1
       if completed == 8: return
+      if match1 == 1: return
       self.layoutext = 1
       instance.text = str(self.layoutext)
       clicky += 1
       if clicky == 2 and self.layoutext != last_num:
          self.layoutext = "click here!"
-         time.sleep(3)
          instance.text = str(self.layoutext)
          if last_num == 2:
             self.layoutext = "click here!"
@@ -128,6 +137,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match1 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
@@ -136,7 +146,9 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match2
       if completed == 8: return
+      if match2 == 1: return
       self.layoutext = 2
       instance.text = str(self.layoutext)
       clicky += 1
@@ -144,7 +156,6 @@ class application(App):
          self.layoutext = "click here!"
          instance.text = str(self.layoutext)
          clicky = 0
-         
          if last_num == 1:
             self.layoutext = "click here!"
             self.card1.text = str(self.layoutext)
@@ -178,6 +189,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match2 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
@@ -186,7 +198,9 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match3
       if completed == 8: return
+      if match3 == 1: return
       self.layoutext = 3
       instance.text = str(self.layoutext)
       clicky += 1
@@ -227,6 +241,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match3 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
@@ -235,7 +250,9 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match4
       if completed == 8: return
+      if match4 == 1: return
       self.layoutext = 4
       instance.text = str(self.layoutext)
       clicky += 1
@@ -276,6 +293,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match4 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
@@ -284,7 +302,9 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match5
       if completed == 8: return
+      if match5 == 1: return
       self.layoutext = 5
       instance.text = str(self.layoutext)
       clicky += 1
@@ -325,6 +345,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match5 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
@@ -333,7 +354,9 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match6
       if completed == 8: return
+      if match6 == 1: return
       self.layoutext = 6
       instance.text = str(self.layoutext)
       clicky += 1
@@ -374,6 +397,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match6 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
@@ -382,7 +406,9 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match7
       if completed == 8: return
+      if match7 == 1: return
       self.layoutext = 7
       instance.text = str(self.layoutext)
       clicky += 1
@@ -424,6 +450,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match7 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
@@ -432,7 +459,9 @@ class application(App):
       global clicky
       global last_num
       global completed
+      global match8
       if completed == 8: return
+      if match8 == 1: return
       self.layoutext = 8
       instance.text = str(self.layoutext)
       clicky += 1
@@ -473,6 +502,7 @@ class application(App):
          clicky = 0
          last_num = 0
          completed += 1
+         match8 += 1
          if completed == 8:
             print('you win!')
       if clicky == 1:
