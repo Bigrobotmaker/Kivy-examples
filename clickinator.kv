@@ -1,0 +1,15 @@
+<clickyclack>:
+    font_size: 24
+    text: 'clicky'
+    on_press: self.toggle()
+<clackyclick>:
+    font_size: 24
+    text: 'clacky'
+    on_press: self.toggle()
+<numbox>:
+    orientation: 'vertical'
+    Label:
+        font_size: 24
+        text: 'Your score is ' + str(self.count)
+    clickyclack:
+    clackyclick:
