@@ -22,13 +22,16 @@ class clackyclick(Button):
         else:
             self.parent.count = 0
 class numbox(BoxLayout):
-    score = NumericProperty()
     count = NumericProperty()
-    timeproperty = NumericProperty(20)
+    time = NumericProperty(20)
+
+    def __init__(self):
+        super().__init__()
+        Clock.schedule_interval(self.second_pass, 1)
     def second_pass(self, dt):
         global time
-        if time > 0:
-            time -= 1
+        if self.time > 0:
+            self.time -= 1
     
     Clock.schedule_interval(second_pass, 1)
 class clickinatorapp(App):
