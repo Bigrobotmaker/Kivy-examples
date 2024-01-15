@@ -1,3 +1,5 @@
+#:kivy 1.0
+
 <clickyclack>:
     font_size: 24
     text: 'clicky'
@@ -10,6 +12,9 @@
     orientation: 'vertical'
     Label:
         font_size: 24
-        text: 'Your score is ' + str(self.count)
+        text: 'Your score is ' + str(root.count)
+    Label:
+        font_size: 20
+        text: 'you have ' + str(root.timeproperty) + ' seconds left'
     clickyclack:
     clackyclick:
