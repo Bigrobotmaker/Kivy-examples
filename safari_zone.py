@@ -14,9 +14,18 @@ class application(App):
       self.fleechance = Label(text = 'flee chance = ' + visualfleechance)
       self.catchchance = Label(text = 'catch chance = ' + visualcatchchance)
       self.encounter = Button(text = 'click here to encounter',on_press = self.encounter)
+      layout.add_widget(self.fleechance)
+      layout.add_widget(self.encounter)
+      layout.add_widget(self.catchchance)
    def encounter(self):
       global visualcatchchance
       global visualfleechance
       global currentpokemon
-      self.layoutext = 'rattata'
+      if currentpokemon != 'n/a':
+         self.layoutext = 'A wild rattata appeared!'
+         self.encounter.text = str(self.layoutext)
+         visualfleechance.text = 'medium'
+         self.fleechance.text = visualfleechance
+         visualcatchchance = 'high'
+         self.catchchance.text = visualcatchchance
       
