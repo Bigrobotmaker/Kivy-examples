@@ -86,7 +86,7 @@ class application(App):
                currentpokemon = 'scyther'
                pkmncatchchance = 'low'
                pkmnfleechance = 'low'
-         self.layoutext = 'A wild', currentpokemon, 'appeared!'
+         self.layoutext = 'A wild ' + currentpokemon + ' appeared!'
          self.encounter.text = str(self.layoutext)
          visualfleechance = str(pkmnfleechance)
          self.fleechance.text = 'flee chance = ' + visualfleechance
