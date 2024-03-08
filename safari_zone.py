@@ -23,7 +23,7 @@ class application(App):
       global visualcatchchance
       global visualfleechance
       global currentpokemon
-      if currentpokemon == 'n/a':
+      if currentpokemon == 'n/a' or currentpokemon != 'n/a':
          a = random.randint(1,100)
          if a <= 39:
             tier = 'common'
