@@ -59,7 +59,7 @@ class application(App):
                pkmncatchchance = 'medium'
                pkmnfleechance = 'high'
          if tier == 'rare':
-            b= random.randint(1,3)
+            b = random.randint(1,3)
             if b == 1:
                currentpokemon = 'cubone'
                pkmncatchchance = 'medium'
@@ -72,7 +72,22 @@ class application(App):
                currentpokemon = 'kangaskahn'
                pkmnfleechance = 'low'
                pkmncatchchance = 'low'
-         self.encounter.text = str('A wild', currentpokemon, 'appeared!')
+         if tier == 'super_rare':
+            b = random.randint(1,3)
+            if b == 1:
+               currentpokemon = 'dratini'
+               pkmncatchchance = 'low'
+               pkmnfleechance = 'high'
+            if b == 2:
+               currentpokemon = 'pinsir'
+               pkmncatchchance = 'low'
+               pkmnfleechance = 'medium'
+            if b == 3:
+               currentpokemon = 'scyther'
+               pkmncatchchance = 'low'
+               pkmnfleechance = 'low'
+         self.layoutext = 'A wild', currentpokemon, 'appeared!'
+         self.encounter.text = str(self.layoutext)
          visualfleechance = str(pkmnfleechance)
          self.fleechance.text = 'flee chance = ' + visualfleechance
          visualcatchchance = str(pkmncatchchance)
