@@ -19,6 +19,7 @@ class application(App):
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
+      layout.addwidget(self.safariball)
       return layout
    def newpokemon(self,instance):
       global visualcatchchance
