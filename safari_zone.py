@@ -72,8 +72,7 @@ class application(App):
                currentpokemon = 'kangaskahn'
                pkmnfleechance = 'low'
                pkmncatchchance = 'low'
-         self.layoutext = 'A wild', currentpokemon, 'appeared!'
-         self.encounter.text = str(self.layoutext)
+         self.encounter.text = 'A wild', currentpokemon, 'appeared!'
          visualfleechance = str(pkmnfleechance)
          self.fleechance.text = 'flee chance = ' + visualfleechance
          visualcatchchance = str(pkmncatchchance)
