@@ -15,6 +15,7 @@ class application(App):
       self.fleechance = Label(text = 'flee chance = ' + visualfleechance)
       self.catchchance = Label(text = 'catch chance = ' + visualcatchchance)
       self.encounter = Button(text = 'click here to encounter',on_press = self.newpokemon)
+      self.safariball = Button(text = 'throw safari ball', on_press = self.safari)
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
@@ -92,6 +93,8 @@ class application(App):
          self.fleechance.text = 'flee chance = ' + visualfleechance
          visualcatchchance = str(pkmncatchchance)
          self.catchchance.text = 'catch chance = ' + visualcatchchance
+   def safari(self,instance):
+      pass
 if __name__ == "__main__":
     myApp = application()
     myApp.run()
