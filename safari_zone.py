@@ -7,6 +7,8 @@ import random
 visualfleechance = 'n/a'
 visualcatchchance = 'n/a'
 currentpokemon = 'n/a'
+actualfleechance = 'n/a'
+actualcatchchance = 'n/a'
 class application(App):
    def build(self):
       global visualfleechance
@@ -25,6 +27,8 @@ class application(App):
       global visualcatchchance
       global visualfleechance
       global currentpokemon
+      global actualfleechance
+      global actualcatchchance
       if currentpokemon == 'n/a' or currentpokemon != 'n/a':
          a = random.randint(1,100)
          if a <= 39:
@@ -59,7 +63,7 @@ class application(App):
             if b == 2:
                currentpokemon = 'venomoth'
                pkmncatchchance = 'medium'
-               pkmnfleechance = 'high'
+               pkmnfleechance = 'medium'
          if tier == 'rare':
             b = random.randint(1,3)
             if b == 1:
