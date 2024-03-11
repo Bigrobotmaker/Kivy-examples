@@ -135,9 +135,13 @@ class application(App):
          visualcatchchance = str(pkmncatchchance)
          self.catchchance.text = 'catch chance = ' + visualcatchchance
    def safari(self,instance):
+      global rocks
+      global is_baited
       c = random.randint(1,100)
       odds = Pokemondata[currentpokemon]['catch']
       odds = odds + (5*rocks)
+      if is_baited == 'true':
+         odds = odds/2
       if c <= odds:
          print('catch success!')
       else:
