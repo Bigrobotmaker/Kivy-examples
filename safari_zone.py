@@ -63,8 +63,8 @@ class application(App):
       global visualcatchchance
       global visualfleechance
       global currentpokemon
-      global actualfleechance
-      global actualcatchchance
+      global rocks
+      global is_baited
       if currentpokemon == 'n/a' or currentpokemon != 'n/a':
          a = random.randint(1,100)
          if a <= 39:
@@ -134,6 +134,8 @@ class application(App):
          self.fleechance.text = 'flee chance = ' + visualfleechance
          visualcatchchance = str(pkmncatchchance)
          self.catchchance.text = 'catch chance = ' + visualcatchchance
+         is_baited = 'false'
+         rocks = 0
    def safari(self,instance):
       global rocks
       global is_baited
