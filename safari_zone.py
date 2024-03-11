@@ -7,12 +7,42 @@ import random
 visualfleechance = 'n/a'
 visualcatchchance = 'n/a'
 currentpokemon = 'n/a'
-actualfleechance = 'n/a'
-actualcatchchance = 'n/a'
+Pokemondata = {'nidoran':{'flee': 10,
+                          'catch': 50
+                         },
+                'doduo': {'flee': 50,
+                         'catch': 60
+                         },
+                'venomoth': {'flee': 30,
+                             'catch': 40
+                             },
+                'tauros': {'flee': 55,
+                            'catch': 35
+                            },
+                'cubone': {'flee': 15,
+                            'catch': 25
+                            },
+                'chansey': {'flee': 65,
+                             'catch': 30
+                           },
+                'kangaskahn': {'flee': 15,
+                                'catch': 15
+                              },
+                'dratini': {'flee': 50,
+                             'catch': 10
+                             },
+                'pinsir': {'flee': 45,
+                            'catch': 12 
+                           },
+                'scyther': {'flee': 70,
+                             'catch': 18
+                            },
+                'mew': {'flee': 25,
+                         'catch': 5
+                         },
+                }
 class application(App):
    def build(self):
-      global visualfleechance
-      global visualcatchchance
       layout = GridLayout(cols = 3)
       self.fleechance = Label(text = 'flee chance = ' + visualfleechance)
       self.catchchance = Label(text = 'catch chance = ' + visualcatchchance)
@@ -99,7 +129,12 @@ class application(App):
          visualcatchchance = str(pkmncatchchance)
          self.catchchance.text = 'catch chance = ' + visualcatchchance
    def safari(self,instance):
-      pass
+      c = random.randint(1,100)
+      odds = Pokemondata[currentpokemon]['catch']
+      if c >= odds:
+         print('catch success!')
+      else:
+         print('catch fail')
 if __name__ == "__main__":
     myApp = application()
     myApp.run()
