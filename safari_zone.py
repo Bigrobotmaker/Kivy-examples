@@ -51,7 +51,7 @@ class application(App):
       self.encounter = Button(text = 'click here to encounter',on_press = self.newpokemon)
       self.safariball = Button(text = 'throw safari ball', on_press = self.safari)
       self.rock = Button(text = 'Rock', on_press = self.rocks)
-      self.bait = Button(text = 'Bait', on_press = self.bait)
+      self.bait = Button(text = 'Bait', on_press = self.berry)
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
@@ -150,7 +150,7 @@ class application(App):
       global rocks
       if currentpokemon != 'n/a':
          rocks = rocks + 1
-   def bait(self,instance):
+   def berry(self,instance):
       global is_baited
       if is_baited == 'false' and currentpokemon != 'n/a':
          is_baited = 'true'
