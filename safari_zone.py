@@ -7,6 +7,8 @@ import random
 visualfleechance = 'n/a'
 visualcatchchance = 'n/a'
 currentpokemon = 'n/a'
+rocks = 0
+is_baited = 'false'
 Pokemondata = {'nidoran':{'flee': 10,
                           'catch': 50
                          },
@@ -48,10 +50,14 @@ class application(App):
       self.catchchance = Label(text = 'catch chance = ' + visualcatchchance)
       self.encounter = Button(text = 'click here to encounter',on_press = self.newpokemon)
       self.safariball = Button(text = 'throw safari ball', on_press = self.safari)
+      self.rock = Button(text = 'Rock', on_press = self.rocks)
+      self.bait = Button(text = 'Bait', on_press = self.bait)
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
       layout.add_widget(self.safariball)
+      layout.add_widget(self.rock)
+      layout.add_widget(self.bait)
       return layout
    def newpokemon(self,instance):
       global visualcatchchance
@@ -131,10 +137,17 @@ class application(App):
    def safari(self,instance):
       c = random.randint(1,100)
       odds = Pokemondata[currentpokemon]['catch']
+      odds = odds + (5*rocks)
       if c <= odds:
          print('catch success!')
       else:
          print('catch fail')
+   def rocks(self,instance):
+      if currentpokemon != 'n/a':
+         rocks = rocks + 1
+   def bait(self,instance):
+      if is_baited == 'false' and currentpokemon != 'n/a':
+         is_baited = 'true'
 if __name__ == "__main__":
     myApp = application()
     myApp.run()
