@@ -143,9 +143,11 @@ class application(App):
       else:
          print('catch fail')
    def rocks(self,instance):
+      global rocks
       if currentpokemon != 'n/a':
          rocks = rocks + 1
    def bait(self,instance):
+      global is_baited
       if is_baited == 'false' and currentpokemon != 'n/a':
          is_baited = 'true'
 if __name__ == "__main__":
