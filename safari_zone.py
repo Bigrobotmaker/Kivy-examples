@@ -131,7 +131,7 @@ class application(App):
    def safari(self,instance):
       c = random.randint(1,100)
       odds = Pokemondata[currentpokemon]['catch']
-      if c >= odds:
+      if c <= odds:
          print('catch success!')
       else:
          print('catch fail')
