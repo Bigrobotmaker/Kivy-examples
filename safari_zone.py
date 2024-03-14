@@ -65,7 +65,7 @@ class application(App):
       global currentpokemon
       global rocks
       global is_baited
-      if currentpokemon == 'n/a' or currentpokemon != 'n/a':
+      if currentpokemon == 'n/a':
          a = random.randint(1,100)
          if a <= 39:
             tier = 'common'
@@ -147,6 +147,14 @@ class application(App):
             odds = odds/2
          if c <= odds:
             print('catch success!')
+            self.layoutext =  'you caught a' + currentpokemon + '! click again to encounter another pokemon'
+            self.encounter.text = self.layoutext
+            currentpokemon = 'n/a'
+            visualcatchchance = 'n/a'
+            visualfleechance = 'n/a'
+            self.catchchance.text = visualcatchchance
+            self.fleechance.text = visualfleechance
+
          else:
             print('catch fail')
    def rocks(self,instance):
