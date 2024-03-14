@@ -170,6 +170,7 @@ class application(App):
       if is_baited == 'false' and currentpokemon != 'n/a':
          is_baited = 'true'
    def leave(self,instance):
+      global currentpokemon
       if currentpokemon != 'n/a':
          self.layoutext =  'click again to encounter another pokemon'
          self.encounter.text = self.layoutext
