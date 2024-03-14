@@ -175,8 +175,8 @@ class application(App):
          self.layoutext =  'click again to encounter another pokemon'
          self.encounter.text = self.layoutext
          currentpokemon = 'n/a'
-         visualcatchchance = 'n/a'
-         visualfleechance = 'n/a'
+         visualcatchchance = 'catch chance = n/a'
+         visualfleechance = 'flee chance = n/a'
          self.catchchance.text = visualcatchchance
          self.fleechance.text = visualfleechance
 if __name__ == "__main__":
