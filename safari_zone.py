@@ -52,13 +52,14 @@ class application(App):
       self.safariball = Button(text = 'throw safari ball', on_press = self.safari)
       self.rock = Button(text = 'Rock', on_press = self.rocks)
       self.bait = Button(text = 'Bait', on_press = self.berry)
-      self.run = Button(text = 'run', on_press = self.run)
+      self.run = Button(text = 'run', on_press = self.leave)
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
       layout.add_widget(self.safariball)
       layout.add_widget(self.rock)
       layout.add_widget(self.bait)
+      layout.add_widget(self.run)
       return layout
    def newpokemon(self,instance):
       global visualcatchchance
@@ -168,7 +169,7 @@ class application(App):
       global is_baited
       if is_baited == 'false' and currentpokemon != 'n/a':
          is_baited = 'true'
-   def run(self,instance):
+   def leave(self,instance):
       if currentpokemon != 'n/a':
          self.layoutext =  'click again to encounter another pokemon'
          self.encounter.text = self.layoutext
