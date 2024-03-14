@@ -140,6 +140,7 @@ class application(App):
    def safari(self,instance):
       global rocks
       global is_baited
+      global currentpokemon
       if currentpokemon != 'n/a':
          c = random.randint(1,100)
          odds = Pokemondata[currentpokemon]['catch']
