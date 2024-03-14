@@ -149,7 +149,7 @@ class application(App):
             odds = odds/2
          if c <= odds:
             print('catch success!')
-            self.layoutext =  'you caught a' + currentpokemon + '! click again to encounter another pokemon'
+            self.layoutext =  'you caught a ' + currentpokemon + '! click again to encounter another pokemon'
             self.encounter.text = self.layoutext
             currentpokemon = 'n/a'
             visualcatchchance = 'n/a'
