@@ -65,6 +65,7 @@ class application(App):
       global currentpokemon
       global rocks
       global is_baited
+      global currentpokemon
       if currentpokemon == 'n/a':
          a = random.randint(1,100)
          if a <= 39:
