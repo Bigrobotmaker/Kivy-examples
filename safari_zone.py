@@ -52,6 +52,7 @@ class application(App):
       self.safariball = Button(text = 'throw safari ball', on_press = self.safari)
       self.rock = Button(text = 'Rock', on_press = self.rocks)
       self.bait = Button(text = 'Bait', on_press = self.berry)
+      self.run = Button(text = 'run', on_press = self.run)
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
@@ -167,6 +168,15 @@ class application(App):
       global is_baited
       if is_baited == 'false' and currentpokemon != 'n/a':
          is_baited = 'true'
+   def run(self,instance):
+      if currentpokemon != 'n/a':
+         self.layoutext =  'click again to encounter another pokemon'
+         self.encounter.text = self.layoutext
+         currentpokemon = 'n/a'
+         visualcatchchance = 'n/a'
+         visualfleechance = 'n/a'
+         self.catchchance.text = visualcatchchance
+         self.fleechance.text = visualfleechance
 if __name__ == "__main__":
     myApp = application()
     myApp.run()
