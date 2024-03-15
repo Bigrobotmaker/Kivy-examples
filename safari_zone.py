@@ -9,6 +9,7 @@ visualcatchchance = 'n/a'
 currentpokemon = 'n/a'
 rocks = 0
 is_baited = 'false'
+baits = 0
 Pokemondata = {'nidoran':{'flee': 10,
                           'catch': 50
                          },
@@ -48,11 +49,11 @@ class application(App):
       layout = GridLayout(cols = 3)
       self.fleechance = Label(text = 'flee chance = ' + visualfleechance)
       self.catchchance = Label(text = 'catch chance = ' + visualcatchchance)
-      self.encounter = Button(text = 'click here to encounter',on_press = self.newpokemon)
+      self.encounter = Button(text = 'click here to encounter',on_press = self.newpokemon,)
       self.safariball = Button(text = 'throw safari ball', on_press = self.safari)
       self.rock = Button(text = 'Rock', on_press = self.rocks)
       self.bait = Button(text = 'Bait', on_press = self.berry)
-      self.run = Button(text = 'run', on_press = self.leave)
+      self.run = Button(text = 'Run', on_press = self.leave)
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
@@ -139,6 +140,7 @@ class application(App):
          self.catchchance.text = 'catch chance = ' + visualcatchchance
          is_baited = 'false'
          rocks = 0
+         baits = 0
    def safari(self,instance):
       global rocks
       global is_baited
@@ -150,35 +152,58 @@ class application(App):
          if is_baited == 'true':
             odds = odds/2
          if c <= odds:
-            print('catch success!')
-            self.layoutext =  'you caught a ' + currentpokemon + '! click again to encounter another pokemon'
+            self.layoutext =  'you caught a ' + currentpokemon + '!\nclick again to encounter\nanother pokemon'
             self.encounter.text = self.layoutext
             currentpokemon = 'n/a'
             visualcatchchance = 'n/a'
             visualfleechance = 'n/a'
             self.catchchance.text = visualcatchchance
             self.fleechance.text = visualfleechance
-
          else:
-            print('catch fail')
+            self.fleecheck()
    def rocks(self,instance):
       global rocks
       if currentpokemon != 'n/a':
          rocks = rocks + 1
+      self.fleecheck()
    def berry(self,instance):
       global is_baited
+      global baits
       if is_baited == 'false' and currentpokemon != 'n/a':
          is_baited = 'true'
+         baits = 3
+      self.fleecheck()
    def leave(self,instance):
       global currentpokemon
       if currentpokemon != 'n/a':
-         self.layoutext =  'click again to encounter another pokemon'
+         self.layoutext =  'click again to encounter\nanother pokemon'
          self.encounter.text = self.layoutext
          currentpokemon = 'n/a'
          visualcatchchance = 'catch chance = n/a'
          visualfleechance = 'flee chance = n/a'
          self.catchchance.text = visualcatchchance
          self.fleechance.text = visualfleechance
+   def fleecheck(self):
+      global currentpokemon
+      global is_baited
+      global baits
+      if currentpokemon != 'n/a':
+         if is_baited == 'true':
+            baits = baits -1
+            if baits == 0:
+               is_baited = 'false'
+         else:
+            c = random.randint(1,100)
+            odds = Pokemondata[currentpokemon]['flee']
+            if c<=odds:
+               self.layoutext =  'oh no, the wild ' + currentpokemon + ' fled,\nclick again to encounter\nanother pokemon'
+               self.encounter.text = str(self.layoutext)
+               currentpokemon = 'n/a'
+               visualcatchchance = 'catch chance = n/a'
+               visualfleechance = 'flee chance = n/a'
+               self.catchchance.text = visualcatchchance
+               self.fleechance.text = visualfleechance
+
 if __name__ == "__main__":
     myApp = application()
     myApp.run()
