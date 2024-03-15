@@ -54,6 +54,7 @@ class application(App):
       self.rock = Button(text = 'Rock', on_press = self.rocks)
       self.bait = Button(text = 'Bait', on_press = self.berry)
       self.run = Button(text = 'Run', on_press = self.leave)
+      self.dex = Button(text = 'Pokedex', on_press = self.screen)
       layout.add_widget(self.fleechance)
       layout.add_widget(self.encounter)
       layout.add_widget(self.catchchance)
@@ -61,6 +62,7 @@ class application(App):
       layout.add_widget(self.rock)
       layout.add_widget(self.bait)
       layout.add_widget(self.run)
+      layout.add_widget(self.dex)
       return layout
    def newpokemon(self,instance):
       global visualcatchchance
@@ -187,6 +189,7 @@ class application(App):
       global currentpokemon
       global is_baited
       global baits
+      global rocks
       if currentpokemon != 'n/a':
          if is_baited == 'true':
             baits = baits -1
@@ -195,6 +198,7 @@ class application(App):
          else:
             c = random.randint(1,100)
             odds = Pokemondata[currentpokemon]['flee']
+            odds = odds + (rocks*5)
             if c<=odds:
                self.layoutext =  'oh no, the wild ' + currentpokemon + ' fled,\nclick again to encounter\nanother pokemon'
                self.encounter.text = str(self.layoutext)
@@ -203,6 +207,8 @@ class application(App):
                visualfleechance = 'flee chance = n/a'
                self.catchchance.text = visualcatchchance
                self.fleechance.text = visualfleechance
+   def screen(self, instance):
+      pass
 
 if __name__ == "__main__":
     myApp = application()
