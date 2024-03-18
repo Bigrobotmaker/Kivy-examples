@@ -58,7 +58,7 @@ Pokemondata = {'nidoran':{'flee': 10,
                 }
 class application(App):
    def build(self):
-      sm = ScreenManager()
+      self.sm = ScreenManager()
       layout = GridLayout(cols = 3)
       screen1 = Screen(name = 'mainscreen')
       self.fleechance = Label(text = 'flee chance = ' + visualfleechance)
@@ -79,13 +79,15 @@ class application(App):
       layout.add_widget(self.run)
       layout.add_widget(self.dex)
       screen1.add_widget(layout)
-      sm.add_widget(screen1)
+      self.sm.add_widget(screen1)
       screen2 = Screen(name = 'dexscreen')
       layout2 = GridLayout(cols = 4)
       for i in Pokemondata:
          layout2.add_widget(Label(text = i + ' current status ' + Pokemondata[i]['status'] ))
       layout2.add_widget(self.back)
-      return sm
+      screen2.add_widget(layout2)
+      self.sm.add_widget(screen2)
+      return self.sm
    def newpokemon(self,instance):
       global visualcatchchance
       global visualfleechance
@@ -233,11 +235,10 @@ class application(App):
                self.catchchance.text = visualcatchchance
                self.fleechance.text = visualfleechance
    def screen(self, instance):
-      sm = ScreenManager()
-      if sm.current == 'mainscreen':
-         sm.current = 'dexscreen'
-      if sm.current == 'dexscreen':
-         sm.current = 'mainscreen'
+      if self.sm.current == 'mainscreen':
+         self.sm.current = 'dexscreen'
+      elif self.sm.current == 'dexscreen':
+         self.sm.current = 'mainscreen'
 
 if __name__ == "__main__":
     myApp = application()
