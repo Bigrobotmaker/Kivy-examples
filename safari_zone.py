@@ -260,7 +260,7 @@ class application(App):
       if currentpokemon != 'n/a' and specials != 0:
          netball = 'true'
          specials = specials - 1
-         self.layoutext =('Net Ball \n (effective aginst scyther and pinsir)\ncount=' + str(specials))
+         self.layoutext =('Net Ball \n(effective aginst scyther and pinsir)\ncount=' + str(specials))
          self.special.text = self.layoutext
          self.safari('net')
 if __name__ == "__main__":
