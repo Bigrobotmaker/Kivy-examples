@@ -59,8 +59,8 @@ Pokemondata = {'nidoran':{'flee': 10,
 class application(App):
    def build(self):
       self.sm = ScreenManager()
-      layout = GridLayout(cols = 3)
-      screen1 = Screen(name = 'mainscreen')
+      self.layout = GridLayout(cols = 3)
+      self.screen1 = Screen(name = 'mainscreen')
       self.fleechance = Label(text = 'flee chance = ' + visualfleechance)
       self.catchchance = Label(text = 'catch chance = ' + visualcatchchance)
       self.encounter = Button(text = 'click here to encounter',on_press = self.newpokemon,)
@@ -70,23 +70,23 @@ class application(App):
       self.run = Button(text = 'Run', on_press = self.leave)
       self.dex = Button(text = 'Pokedex', on_press = self.screen)
       self.back = Button(text = 'Back to catching', on_press = self.screen)
-      layout.add_widget(self.fleechance)
-      layout.add_widget(self.encounter)
-      layout.add_widget(self.catchchance)
-      layout.add_widget(self.safariball)
-      layout.add_widget(self.rock)
-      layout.add_widget(self.bait)
-      layout.add_widget(self.run)
-      layout.add_widget(self.dex)
-      screen1.add_widget(layout)
-      self.sm.add_widget(screen1)
-      screen2 = Screen(name = 'dexscreen')
-      layout2 = GridLayout(cols = 4)
+      self.layout.add_widget(self.fleechance)
+      self.layout.add_widget(self.encounter)
+      self.layout.add_widget(self.catchchance)
+      self.layout.add_widget(self.safariball)
+      self.layout.add_widget(self.rock)
+      self.layout.add_widget(self.bait)
+      self.layout.add_widget(self.run)
+      self.layout.add_widget(self.dex)
+      self.screen1.add_widget(self.layout)
+      self.sm.add_widget(self.screen1)
+      self.screen2 = Screen(name = 'dexscreen')
+      self.layout2 = GridLayout(cols = 4)
       for i in Pokemondata:
-         layout2.add_widget(Label(text = i + ' current status ' + Pokemondata[i]['status'] ))
-      layout2.add_widget(self.back)
-      screen2.add_widget(layout2)
-      self.sm.add_widget(screen2)
+         self.layout2.add_widget(Label(text = i + ' current status:\n' + Pokemondata[i]['status'] ))
+      self.layout2.add_widget(self.back)
+      self.screen2.add_widget(self.layout2)
+      self.sm.add_widget(self.screen2)
       return self.sm
    def newpokemon(self,instance):
       global visualcatchchance
@@ -236,6 +236,15 @@ class application(App):
                self.fleechance.text = visualfleechance
    def screen(self, instance):
       if self.sm.current == 'mainscreen':
+         self.layout2.remove_widget(self.back)
+         self.sm.remove_widget(self.screen2)
+         self.screen2 = Screen(name = 'dexscreen')
+         self.layout2 = GridLayout(cols = 4)
+         for i in Pokemondata:
+            self.layout2.add_widget(Label(text = i + ' current status:\n' + Pokemondata[i]['status'] ))
+         self.layout2.add_widget(self.back)
+         self.screen2.add_widget(self.layout2)
+         self.sm.add_widget(self.screen2)
          self.sm.current = 'dexscreen'
       elif self.sm.current == 'dexscreen':
          self.sm.current = 'mainscreen'
