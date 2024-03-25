@@ -11,6 +11,8 @@ currentpokemon = 'n/a'
 rocks = 0
 is_baited = 'false'
 baits = 0
+netball = 'false'
+specials = 5
 Pokemondata = {'nidoran':{'flee': 10,
                           'catch': 50,
                           'status': 'unseen'
@@ -70,6 +72,7 @@ class application(App):
       self.run = Button(text = 'Run', on_press = self.leave)
       self.dex = Button(text = 'Pokedex', on_press = self.screen)
       self.back = Button(text = 'Back to catching', on_press = self.screen)
+      self.special = Button(text = 'Net Ball \n (effective aginst scyther and pinsir)\ncount=5', on_press = self.bugsafari)
       self.layout.add_widget(self.fleechance)
       self.layout.add_widget(self.encounter)
       self.layout.add_widget(self.catchchance)
@@ -78,6 +81,7 @@ class application(App):
       self.layout.add_widget(self.bait)
       self.layout.add_widget(self.run)
       self.layout.add_widget(self.dex)
+      self.layout.add_widget(self.special)
       self.screen1.add_widget(self.layout)
       self.sm.add_widget(self.screen1)
       self.screen2 = Screen(name = 'dexscreen')
@@ -179,6 +183,8 @@ class application(App):
          odds = odds + (5*rocks)
          if is_baited == 'true':
             odds = odds/2
+         if netball == 'true' and (currentpokemon == 'scyther' or currentpokemon == 'pinsir'):
+            odds = odds*2
          if c <= odds:
             self.layoutext =  'you caught a ' + currentpokemon + '!\nclick again to encounter\nanother pokemon'
             self.encounter.text = self.layoutext
@@ -248,7 +254,15 @@ class application(App):
          self.sm.current = 'dexscreen'
       elif self.sm.current == 'dexscreen':
          self.sm.current = 'mainscreen'
-
+   def bugsafari(self, instance):
+      global netball
+      global specials
+      if currentpokemon != 'n/a' and specials != 0:
+         netball = 'true'
+         specials = specials - 1
+         self.layoutext =('Net Ball \n (effective aginst scyther and pinsir)\ncount=' + str(specials))
+         self.special.text = self.layoutext
+         self.safari('net')
 if __name__ == "__main__":
     myApp = application()
     myApp.run()
